@@ -10,7 +10,7 @@ Venus: For those that get bored of looking at their wallpaper
     <img src="https://github.com/AlfredoSequeida/venus/raw/master/artwork/venus.png" alt="venus" width="1920px">
     </br>
     </br>
-    <img src="https://cslmvq.dm.files.1drv.com/y4pSj8ZVtOpfARkgBQjWaAwcSjTL0ex1Fb82PEjt1OGrpl7-zSqNOvDvOWklP81GPPbhEWvhTjm493Y_TZTacjAfebhdDG2bgAmxbDcYeYvLWZYStklhC4F5M_18ay37d2xXsYmoAUZ-NB6oljSKVCzQHuSbQPxQpZv7vITvVG--wv1pHK1rQcFCy2ym6Dd_XfAfE9bESJkBKd-mw0KsI_nPQ/venus_demo.gif" alt="venus_demo">
+    <img src="https://cslmvq.dm.files.1drv.com/y4mytqDtiGYldKiSBZ_lc2gbUxxz-IVM2DVthXOeBM-Y7Qhs_7gBDj5VHVayDSyZBJdgPHIaZFaMxrw6rbGMQb0NCA5j-ZtkH3c3Lqt5JWy3h3btrFXK0riqsDnpKCP9Z4xGB4bpMLmzDrnocl75-wzfV9BdXrEzgGC6o-mW4cX0OQtpmn7XMsnuChAxRNJCy7Y9lqtCdjNCRn2zBhB-azIRg/venus_demo.gif?download&psid=1">
 </p>
 
 Venus aims to be a cross-platform tool to automatically change your desktop wallpaper to something random using images from [Unsplash](https://unsplash.com/). All images are stored as temporary files, this way its disposal is handled by the operating system. 
