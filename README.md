@@ -32,7 +32,7 @@ Venus also handles using images that work with your resolution.
 -----------------
 
 1.  Check for open issues or open a fresh issue to start a discussion
-    around a feature idea or a bug [here](https://github.com/venus/venus/issues)
+    around a feature idea or a bug [here](https://github.com/AlfredoSequeida/venus/issues)
     tag for issues that should be ideal for people who are not very familiar with the codebase yet.
 2.  Fork [the repository](https://github.com/alfredosequeida/venus) on
     GitHub to start making your changes to the **master** branch (or branch off of it).
