@@ -2,23 +2,6 @@ from setuptools import setup, find_packages
 import os
 import sys
 
-
-##------------------------------------------------------------------------------
-##we don't need all the other platform specific files, so we remove them
-#
-##platform specific files
-#platforms = ["venus/linux.py", "venus/windows.py", "venus/darwin.py"] 
-#
-#platform = sys.platform
-#cwd = os.getcwd()
-#
-#for p in platforms:
-#    if platform not in p:
-#        if os.path.isfile(os.path.join(cwd, p)):
-#            os.remove(os.path.join(cwd, p))
-#
-##------------------------------------------------------------------------------
-
 platform = sys.platform
 #os tools directory
 platform_file = ''
