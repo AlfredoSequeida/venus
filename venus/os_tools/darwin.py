@@ -7,6 +7,13 @@ def set_wall(picture_file):
     """
     print(picture_file)
 
+    SCRIPT = """/usr/bin/osascript<<END
+    tell application "Finder"
+    set desktop picture to POSIX file "%s"
+    end tell"""
+
+    subprocess.Popen(SCRIPT%picture_file, shell=True)
+
 def get_screen_resolution():
     """
     This method gets the screen resolution using xrandr
