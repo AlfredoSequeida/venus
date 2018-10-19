@@ -11,7 +11,7 @@ Venus also handles using images that work with your resolution.
  1) clone using git or download the zip form this page
  ```
     -> using git clone
-    git clone 
+    git clone https://github.com/AlfredoSequeida/venus.git
  ```
  
  2) navigate to the root directory of venus (unzip if necessary) and install using pip
@@ -40,4 +40,4 @@ Venus also handles using images that work with your resolution.
     works as expected.
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :) Make sure to add yourself to
-    [AUTHORS]().
+    [AUTHORS](https://github.com/AlfredoSequeida/venus/blob/master/AUTHORS).
