@@ -17,6 +17,10 @@ Venus aims to be a cross-platform tool to automatically change your desktop wall
 
 Venus also handles using images that work with your resolution.
 
+---
+
+Note for the adventurous -> set venus as a startup program. This way you can see what awaits each time you reboot :)
+
 # Installation
  1) clone using git or download the zip form this page
  ```
