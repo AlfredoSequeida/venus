@@ -42,6 +42,16 @@ Note for the adventurous -> set venus as a startup program. This way you can see
  venus 
  ```
  
+ 
+ Current Verion 0.0.1 - Tested on
+ -----------------
+ - Arch Linux [Feh 2.28] -> - [x] works
+ - Ubuntu 18.04.1 LTS [Gnome 3.28] -> - [x] works
+ - macOS High Sierra -> - [x] works
+ - Windows 10 -> [ ] works
+
+ 
+ 
  How to Contribute
 -----------------
 
