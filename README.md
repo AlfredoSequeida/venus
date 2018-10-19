@@ -4,6 +4,7 @@ Venus: For those that get bored of looking at their wallpaper
 <p align="center">
     <img src="https://github.com/AlfredoSequeida/venus/raw/master/artwork/venus.png" alt="venus">
     </br>
+    </br>
     <img src="https://github.com/AlfredoSequeida/venus/raw/master/artwork/venus_demo.gif" alt="venus_demo">
 </p>
 
