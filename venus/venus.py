@@ -1,7 +1,7 @@
 import sys                                                                  
 from venus import linux
-from venus import darwin 
-from venus import windows
+#from venus import darwin 
+#from venus import windows
 import requests
 import tempfile
 
