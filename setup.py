@@ -3,7 +3,7 @@ import os
 import sys
 
 platform = sys.platform
-#os tools directory
+
 platform_file = ''
 
 if 'linux' in platform:
