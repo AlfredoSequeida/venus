@@ -1,6 +1,11 @@
 Venus: For those that get bored of looking at their wallpaper 
 ===============================================================
 
+[![PyPI status](https://img.shields.io/pypi/status/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+
+
 <p align="center">
     <img src="https://github.com/AlfredoSequeida/venus/raw/master/artwork/venus.png" alt="venus" width="1920px">
     </br>
@@ -46,3 +51,4 @@ Venus also handles using images that work with your resolution.
 4.  Send a pull request and bug the maintainer until it gets merged and
     published. :) Make sure to add yourself to
     [AUTHORS](https://github.com/AlfredoSequeida/venus/blob/master/AUTHORS).
+
