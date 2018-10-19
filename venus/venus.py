@@ -1,17 +1,14 @@
 import sys                                                                  
-from venus import linux
-#from venus import darwin 
-#from venus import windows
 import requests
 import tempfile
 
 def get_wall(resolution="1920x1080"):
     """
-    This method downloads a random  wallpaper to use from unsplash. The file      is 
+    This method downloads a random  wallpaper to use from unsplash. The file is 
     saved to a temporary file so it can be taken care of by the operating 
     system.
 
-    :param resolution - the resolution to use for retrieving the wallpaper t     he  
+    :param resolution - the resolution to use for retrieving the wallpaper the  
                         default resolution is 1920x1080
     :return - the picture file retrieved
     """
@@ -32,13 +29,15 @@ def main():
     platform = sys.platform
 
     if 'linux' in platform:
+        from venus.os_tools import linux
         linux.set_wall(get_wall(resolution=linux.get_screen_resolution()))
 
     elif 'win32' in platform:
-        #windows.set_wall(get_wall(resolution=windows.get_screen_resolution()))
-        print("windows")
+        from venus.os_tools import windows 
+        windows.set_wall(get_wall(resolution=windows.get_screen_resolution()))
 
     elif 'darwin' in platform:
+        from venus.os_tools import darwin 
         darwin.set_wall(get_wall(resolution=darwin.get_screen_resolution()))
 
 if __name__ == "__main__":
