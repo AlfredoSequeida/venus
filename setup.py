@@ -8,7 +8,7 @@ platform_file = ''
 
 if 'linux' in platform:
     platform_file = "os_tools/linux.py" 
-elif 'windows' in platform:
+elif 'win32' in platform:
     platform_file = "os_tools/windows.py" 
 elif 'darwin' in platform:
     platform_file = "os_tools/darwin.py" 
