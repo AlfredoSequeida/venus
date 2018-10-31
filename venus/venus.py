@@ -33,7 +33,9 @@ def main():
         linux.set_wall(get_wall(resolution=linux.get_screen_resolution()))
 
     elif 'win32' in platform:
-        from venus.os_tools import windows 
+        #from venus.os_tools import windows 
+        #temporary fix for development until a windows package is made
+        from os_tools import windows 
         windows.set_wall(get_wall(resolution=windows.get_screen_resolution()))
 
     elif 'darwin' in platform:
