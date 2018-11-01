@@ -16,7 +16,7 @@ elif 'darwin' in platform:
 
 setup(
     name='venus',
-    version='0.1.0',
+    version='0.0.1',
     author="Alfredo Sequeida",
     description="A cross platform tool for setting a random wallpaper image from unsplash.com",
     license="MIT",
