@@ -7,11 +7,11 @@ platform = sys.platform
 platform_file = ''
 
 if 'linux' in platform:
-    platform_file = "os_tools/linux.py" 
+    platform_file = 'venus/os_tools/linux.py' 
 elif 'win32' in platform:
-    platform_file = "os_tools/windows.py" 
+    platform_file = 'venus/os_tools/windows.py' 
 elif 'darwin' in platform:
-    platform_file = "os_tools/darwin.py" 
+    platform_file = 'venus/os_tools/darwin.py' 
 
 
 setup(
@@ -20,8 +20,9 @@ setup(
     author="Alfredo Sequeida",
     description="A cross platform tool for setting a random wallpaper image from unsplash.com",
     license="MIT",
-    packages=['venus',],
-    package_data={'venus': [platform_file]},
+    packages=['venus'],
+    scripts=[platform_file],
+    include_package_data=True,
     install_requires=[
         'requests',
     ],
