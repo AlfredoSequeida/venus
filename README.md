@@ -48,7 +48,7 @@ Note for the adventurous -> set venus as a startup program. This way you can see
  - [x] Arch Linux [Feh 2.28]
  - [x] Ubuntu 18.04.1 LTS [Gnome 3.28]
  - [x] macOS High Sierra
- - [ ] Windows 10
+ - [x] Windows 10
 
  
  

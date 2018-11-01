@@ -1,6 +1,7 @@
 import sys                                                                  
 import requests
 import tempfile
+import os
 
 def get_wall(resolution="1920x1080"):
     """
@@ -16,9 +17,10 @@ def get_wall(resolution="1920x1080"):
     base_url = 'https://source.unsplash.com/random/' + resolution
     r = requests.get(base_url)
 
-    _, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_")
+    fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_")
 
-    with open(picture_file, 'wb') as f:
+    with os.fdopen(fd, 'wb') as f:
+
         #downloading the image to the system
         f.write(r.content)
 
