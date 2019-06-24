@@ -21,7 +21,7 @@ Venus also handles using images that work with your resolution.
 Note for the adventurous -> set venus as a startup program. This way you can see what awaits you with each reboot :)
 
 # Installation
-1) clone using git or download the zip form this page
+1) clone using git or download the zip from this page
 
 ```
 git clone https://github.com/AlfredoSequeida/venus.git
