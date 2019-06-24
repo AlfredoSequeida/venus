@@ -16,15 +16,15 @@ elif 'darwin' in platform:
 
 setup(
     name='venus',
-    version='0.1.0',
+    version='0.1.1',
     author="Alfredo Sequeida",
-    description="A cross platform tool for setting a random wallpaper image from unsplash.com",
-    license="MIT",
+    description='A cross platform tool for setting a random wallpaper image from unsplash.com',
+    license='MIT',
     packages=['venus'],
     scripts=[platform_file],
     include_package_data=True,
     install_requires=[
         'requests',
     ],
-    entry_points={"console_scripts": ["venus = venus.venus:main"]},
+    entry_points={'console_scripts': ['venus = venus.venus:main']},
 )
