@@ -29,7 +29,7 @@ Note for the adventurous -> set venus as a startup program. This way you can see
  2) navigate to the root directory of venus (unzip if necessary) and install using pip
  
  ```
- pip333 install .
+ pip3 install .
 ```
 
 
