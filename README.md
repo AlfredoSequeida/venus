@@ -21,13 +21,13 @@ Venus also handles using images that work with your resolution.
 Note for the adventurous -> set venus as a startup program. This way you can see what awaits you with each reboot :)
 
 # Installation
- 1) clone using git or download the zip form this page
+1) clone using git or download the zip form this page
 
 ```
 git clone https://github.com/AlfredoSequeida/venus.git
 ```
  
- 2) navigate to the root directory of venus (unzip if necessary) and install using pip
+2) navigate to the root directory of venus (unzip if necessary) and install using pip
 
 Linux/OSX
  
@@ -43,19 +43,19 @@ py -m pip install .
 
 
 # Usage
- 1) Just type venus
+1) Just type venus
  
 Linux/OSX
 
- ```
- venus 
- ```
+```
+venus 
+```
 
 Windows 
 
- ```
- py -m venus 
- ```
+```
+py -m venus 
+```
 
  
  Current Verion 0.1.0 - verified working on
