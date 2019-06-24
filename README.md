@@ -23,14 +23,13 @@ Note for the adventurous -> set venus as a startup program. This way you can see
 # Installation
  1) clone using git or download the zip form this page
  ```
-    -> using git clone
     git clone https://github.com/AlfredoSequeida/venus.git
  ```
  
  2) navigate to the root directory of venus (unzip if necessary) and install using pip
  
  ```
- pip install .
+ pip333 install .
 ```
 
 
