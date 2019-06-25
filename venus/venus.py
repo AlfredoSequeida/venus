@@ -28,14 +28,25 @@ def get_wall(resolution="1920x1080", search_term=""):
 
     return picture_file
 
+def get_config():
+    """
+    This method gets the configuration for venus
+
+    :return - the config file
+    """
+
+    config = configparser.ConfigParser()
+    config.read(os.path.join(os.path.expanduser('~'), '.config/venus/config'))
+
+    return config
+
 def main():
     #checking platform for applying the wallpaper
     platform = sys.platform
 
     #getting config
-    config = configparser.ConfigParser()
-    config.read(os.path.join(os.path.expanduser('~'), '.config/venus/config'))
-
+    config = get_config()
+    
     search_term_config = config['SETTINGS']['SEARCH_TERMS']
 
     if 'linux' in platform:
