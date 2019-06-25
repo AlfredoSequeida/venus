@@ -67,12 +67,12 @@ Edit the config file located in:
 ~.config/venus/config
 ```
 
-By default, the search terms are empty, to choose what kind of images you want, enter search terms separated by commas.
+By default, the search terms are empty, which means the image selection will be random. To choose what kind of images you want, enter search terms separated by commas.
 
 Here is an example:
 
 ```
-SEARCH_TERMS = landscape, nature, cars
+SEARCH_TERMS = landscape,nature,car
 ```
 
  
