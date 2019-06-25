@@ -76,7 +76,7 @@ SEARCH_TERMS = landscape,nature,car
 ```
 
  
- Current Verion 0.1.0 - verified working on
+ Current Verion 0.1.1 - verified working on
  -----------------
  - [x] Arch Linux [Feh 2.28]
  - [x] Ubuntu 18.04.1 LTS [Gnome 3.28]
