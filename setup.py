@@ -19,6 +19,8 @@ setup(
     version='0.1.1',
     author="Alfredo Sequeida",
     description='A cross platform tool for setting a random wallpaper image from unsplash.com',
+    url='https://github.com/AlfredoSequeida/venus',
+    download_url='https://github.com/AlfredoSequeida/venus/archive/0.1.1.tar.gz',
     license='MIT',
     packages=['venus'],
     scripts=[platform_file],
