@@ -38,7 +38,7 @@ py -m pip install venuspy
 
 
 # Usage
-1) Just type venus
+1) Just type venus!
  
 Linux/OSX
 
