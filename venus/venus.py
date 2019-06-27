@@ -4,7 +4,7 @@ import tempfile
 import os
 import configparser
 
-def get_wall(resolution="1920x1080", search_term=""):
+def get_wall(resolution="1920x1080", search_term="", output_path=""):
     """
     This method downloads a random  wallpaper to use from unsplash. The file is 
     saved to a temporary file so it can be taken care of by the operating 
@@ -19,10 +19,13 @@ def get_wall(resolution="1920x1080", search_term=""):
 
     r = requests.get(base_url)
 
-    fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_")
+    # save image to location from config file or to temp location if setting is empty
+    if output_path:
+        fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_", dir=output_path)
+    else:
+        fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_")
 
     with os.fdopen(fd, 'wb') as f:
-
         #downloading the image to the system
         f.write(r.content)
 
@@ -47,22 +50,33 @@ def main():
     #getting config
     config = get_config()
     
-    search_term_config = config['SETTINGS']['SEARCH_TERMS']
+    try:
+        search_term_config = config['SETTINGS']['SEARCH_TERMS']
+        output_path_config = config['SETTINGS']['OUTPUT_PATH']
+    except KeyError: 
+        print ('Incorrect config file in $HOME/.config/venus' 
+                + '\nPlease make sure all config options are present:'
+                + '\nSEARCH_TERMS'
+                + '\nOUTPUT_PATH')
+        exit()
 
     if 'linux' in platform:
         from venus.os_tools import linux
         linux.set_wall(get_wall(resolution=linux.get_screen_resolution(), 
-            search_term=search_term_config))
+            search_term=search_term_config,
+            output_path = output_path_config))
 
     elif 'win32' in platform:
         from venus.os_tools import windows 
         windows.set_wall(get_wall(resolution=windows.get_screen_resolution(),
-            search_term = search_term_config))
+            search_term = search_term_config,
+            output_path = output_path_config))
 
     elif 'darwin' in platform:
         from venus.os_tools import darwin 
         darwin.set_wall(get_wall(resolution=darwin.get_screen_resolution(),
-            search_term = search_term_config))
+            search_term = search_term_config,
+            output_path = output_path_config))
 
 if __name__ == "__main__":
     main()

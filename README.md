@@ -69,8 +69,18 @@ Here is an example:
 SEARCH_TERMS = landscape,nature,car
 ```
 
+By default all images are stored as temporary files in the temp directory of the operating system. To change the location where the images are stored, edit the OUTPUT_PATH option.
+
+
+Here is an example:
+
+```
+OUTPUT_PATH = /home/user/Pictures
+```
+            
+
  
- Current Verion 0.1.1 - verified working on
+ Current Verion 0.1.4 - verified working on
  -----------------
  - [x] Arch Linux [Feh 2.28]
  - [x] Ubuntu 18.04.1 LTS [Gnome 3.28]
