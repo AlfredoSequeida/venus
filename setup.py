@@ -18,7 +18,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='venuspy',
-    version='0.1.4',
+    version='0.1.5',
     author="Alfredo Sequeida",
     description='A cross platform tool for setting a random wallpaper image from unsplash.com',
     long_description=long_description,
