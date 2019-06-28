@@ -4,7 +4,7 @@ import tempfile
 import os
 import configparser
 
-def get_wall(resolution="1920x1080", search_term="", output_path=""):
+def get_wall(resolution="1920x1080", search_term=None, output_path=None):
     """
     This method downloads a random  wallpaper to use from unsplash. The file is 
     saved to a temporary file so it can be taken care of by the operating 
@@ -19,11 +19,7 @@ def get_wall(resolution="1920x1080", search_term="", output_path=""):
 
     r = requests.get(base_url)
 
-    # save image to location from config file or to temp location if setting is empty
-    if output_path:
-        fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_", dir=output_path)
-    else:
-        fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_")
+    fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_", dir=output_path)
 
     with os.fdopen(fd, 'wb') as f:
         #downloading the image to the system
@@ -53,12 +49,19 @@ def main():
     try:
         search_term_config = config['SETTINGS']['SEARCH_TERMS']
         output_path_config = config['SETTINGS']['OUTPUT_PATH']
+
+
     except KeyError: 
         print ('Incorrect config file in $HOME/.config/venus' 
                 + '\nPlease make sure all config options are present:'
                 + '\nSEARCH_TERMS'
                 + '\nOUTPUT_PATH')
         exit()
+
+    #default path for empty OUTPUT_PATH setting
+    if not output_path_config:
+        output_path_config = None
+
 
     if 'linux' in platform:
         from venus.os_tools import linux
