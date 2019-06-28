@@ -24,7 +24,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/AlfredoSequeida/venus',
-    download_url='https://github.com/AlfredoSequeida/venus/archive/0.1.4.tar.gz',
+    download_url='https://github.com/AlfredoSequeida/venus/archive/0.1.5.tar.gz',
     license='MIT',
     packages=['venus'],
     scripts=[platform_file],
