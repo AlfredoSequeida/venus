@@ -77,10 +77,19 @@ Here is an example:
 ```
 OUTPUT_PATH = /home/user/Pictures
 ```
+
+Venus has the option of using a timer to change your wallpaper given an interval in seconds.
+
+Here is an example that changes the wallpaper every 60 seconds (1 minute):
+
+```
+WAIT_TIME = 60
+```
+            
             
 
  
- Current Verion 0.1.4 - verified working on
+ Current Verion 0.1.6 - verified working on
  -----------------
  - [x] Arch Linux [Feh 2.28]
  - [x] Ubuntu 18.04.1 LTS [Gnome 3.28]

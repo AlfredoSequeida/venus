@@ -1,6 +1,6 @@
 import os
 
-__version__ = "0.1.5"
+__version__ = "0.1.6"
 
 dir_path_to_conf = os.path.join(os.path.expanduser('~'), '.config/venus')
 
@@ -12,6 +12,7 @@ file_path_to_conf = os.path.join(dir_path_to_conf, 'config')
 text = """[SETTINGS]
 SEARCH_TERMS =
 OUTPUT_PATH = 
+WAIT_TIME = 
 """
 
 if not os.path.exists(dir_path_to_conf):
