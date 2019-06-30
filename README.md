@@ -12,7 +12,7 @@ Venus: For those that get bored of looking at their wallpaper
     <img src="https://github.com/AlfredoSequeida/venus/raw/master/artwork/venus_demo.gif" alt="">
 </p>
 
-Venus aims to be a cross-platform tool to automatically change your desktop wallpaper using images from [Unsplash](https://unsplash.com/). All images are stored in the system's temporary directory, this way their disposal is handled by the operating system. 
+Venus aims to be a cross-platform tool to automatically change your desktop wallpaper using images from [Unsplash](https://unsplash.com/). By default, all images are stored in the system's temporary directory, this way their disposal is handled by the operating system. 
 
 
 Venus also handles using images that work with your resolution.
