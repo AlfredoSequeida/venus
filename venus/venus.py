@@ -15,7 +15,7 @@ def get_wall(resolution="1920x1080", search_term=None, output_path=None):
                         default resolution is 1920x1080
     :return - the picture file retrieved
     """
-    
+
     base_url = 'https://source.unsplash.com/' + resolution +'/?' + search_term
 
     r = requests.get(base_url)

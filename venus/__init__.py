@@ -1,6 +1,6 @@
 import os
 
-__version__ = "0.1.7"
+__version__ = "0.1.8"
 
 dir_path_to_conf = os.path.join(os.path.expanduser('~'), '.config/venus')
 

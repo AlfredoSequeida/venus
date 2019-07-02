@@ -1,4 +1,5 @@
 import subprocess                                                           
+import dbus
 
 def set_wall(picture_file):
     """
@@ -22,6 +23,28 @@ def set_wall(picture_file):
         command = subprocess.call(["gsettings", "set", "org.gnome.desktop.background", "picture-uri", "file://" + picture_file])
     except OSError:
         pass
+
+    #kde
+    try:
+        plugin = 'org.kde.image'
+
+        jscript = """
+        var allDesktops = desktops();
+        print (allDesktops);
+        for (i=0;i<allDesktops.length;i++) {
+            d = allDesktops[i];
+            d.wallpaperPlugin = "%s";
+            d.currentConfigGroup = Array("Wallpaper", "%s", "General");
+            d.writeConfig("Image", "file://%s")
+        }
+        """
+        bus = dbus.SessionBus()
+        plasma = dbus.Interface(bus.get_object('org.kde.plasmashell', '/PlasmaShell'), dbus_interface='org.kde.PlasmaShell')
+        plasma.evaluateScript(jscript % (plugin, plugin, picture_file))
+
+    except OSError:
+        pass
+
 
 def get_screen_resolution():
     """

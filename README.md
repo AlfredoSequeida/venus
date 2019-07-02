@@ -89,10 +89,11 @@ WAIT_TIME = 60
             
 
  
- Current Verion 0.1.7 - verified working on
+ Current Verion 0.1.8 - verified working on
  -----------------
  - [x] Arch Linux [Feh 2.28]
  - [x] Ubuntu 18.04.1 LTS [Gnome 3.28]
+ - [x] Kubuntu 19.04 [KDE Plasma 5.15.4]
  - [x] macOS High Sierra
  - [x] Windows 10
 
