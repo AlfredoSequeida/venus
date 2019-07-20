@@ -12,7 +12,7 @@ def set_wall(picture_file):
     #openbox
     try:
         feh = subprocess.call(["feh", "--bg-fill", picture_file])
-    except OSError:
+    except:
         pass
 
     #gsettings set org.gnome.desktop.background picture-uri 'file:///home/Jo     hnDoe/Pictures/cool_wallpaper.jpg'
@@ -21,7 +21,7 @@ def set_wall(picture_file):
     #gnome
     try:
         command = subprocess.call(["gsettings", "set", "org.gnome.desktop.background", "picture-uri", "file://" + picture_file])
-    except OSError:
+    except:
         pass
 
     #kde
@@ -42,7 +42,7 @@ def set_wall(picture_file):
         plasma = dbus.Interface(bus.get_object('org.kde.plasmashell', '/PlasmaShell'), dbus_interface='org.kde.PlasmaShell')
         plasma.evaluateScript(jscript % (plugin, plugin, picture_file))
 
-    except OSError:
+    except:
         pass
 
 
