@@ -89,7 +89,7 @@ WAIT_TIME = 60
             
 
  
- Current Verion 0.1.8 - verified working on
+ Current Verion 0.1.9 - verified working on
  -----------------
  - [x] Arch Linux [Feh 2.28]
  - [x] Ubuntu 18.04.1 LTS [Gnome 3.28]

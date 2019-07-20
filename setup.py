@@ -6,13 +6,13 @@ with open("README.md", "r") as fh:
 
 setup(
     name='venuspy',
-    version='0.1.8',
+    version='0.1.9',
     author="Alfredo Sequeida",
     description='A cross platform tool for setting a random wallpaper image from unsplash.com',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/AlfredoSequeida/venus',
-    download_url='https://github.com/AlfredoSequeida/venus/archive/0.1.8.tar.gz',
+    download_url='https://github.com/AlfredoSequeida/venus/archive/0.1.9.tar.gz',
     keywords ='wallpaper unsplash randomwallpaper',
     platforms ='any',
     classifiers=[
