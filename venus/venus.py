@@ -41,8 +41,15 @@ def get_config():
     return config
 
 def main():
-    #checking platform for applying the wallpaper
+    #checking platform for using system specific code
     platform = sys.platform
+
+    if 'linux' in platform:
+        from venus.os_tools import linux as system 
+    elif 'win32' in platform:
+        from venus.os_tools import windows as system 
+    elif 'darwin' in platform:
+        from venus.os_tools import darwin as system 
 
     #getting config
     config = get_config()
@@ -69,23 +76,9 @@ def main():
 
     while run:
 
-        if 'linux' in platform:
-            from venus.os_tools import linux
-            linux.set_wall(get_wall(resolution=linux.get_screen_resolution(), 
-                search_term=search_term_config,
-                output_path = output_path_config))
-
-        elif 'win32' in platform:
-            from venus.os_tools import windows 
-            windows.set_wall(get_wall(resolution=windows.get_screen_resolution(),
-                search_term = search_term_config,
-                output_path = output_path_config))
-
-        elif 'darwin' in platform:
-            from venus.os_tools import darwin 
-            darwin.set_wall(get_wall(resolution=darwin.get_screen_resolution(),
-                search_term = search_term_config,
-                output_path = output_path_config))
+        system.set_wall(get_wall(resolution=system.get_screen_resolution(), 
+            search_term=search_term_config,
+            output_path = output_path_config))
 
         if not wait_time_config:
             run = False
