@@ -1,8 +1,6 @@
 import sys                                                                  
 import requests
 import tempfile
-import codecs
-import re
 import os
 import configparser
 import time 
@@ -63,11 +61,12 @@ def main():
 
     except KeyError: 
 
-        print ('Incorrect config file in $HOME/.config/venus' 
+        from venus import __config__
+
+        print ('Incorrect config file in $HOME/.config/venus'
                 + '\nPlease make sure all config options are present:'
-                + '\nSEARCH_TERMS'
-                + '\nOUTPUT_PATH'
-                + '\nWAIT_TIME')
+                + '\n' + __config__)
+
         exit()
 
     #default path for empty OUTPUT_PATH setting
