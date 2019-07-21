@@ -1,6 +1,8 @@
 import sys                                                                  
 import requests
 import tempfile
+import codecs
+import re
 import os
 import configparser
 import time 
@@ -60,6 +62,7 @@ def main():
         wait_time_config = config['SETTINGS']['WAIT_TIME']
 
     except KeyError: 
+
         print ('Incorrect config file in $HOME/.config/venus' 
                 + '\nPlease make sure all config options are present:'
                 + '\nSEARCH_TERMS'

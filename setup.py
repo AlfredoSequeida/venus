@@ -1,18 +1,36 @@
 from setuptools import setup, find_packages
+import codecs
+import re
 import os
 
-with open("README.md", "r") as fh:
+with open('README.md', 'r') as fh:
     long_description = fh.read()
+
+here = os.path.abspath(os.path.dirname(__file__))
+
+def read(*parts):
+    with codecs.open(os.path.join(here, *parts), 'r') as fp:
+        return fp.read()
+
+def find_version(*file_paths):
+    version_file = read(*file_paths)
+    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                              version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError('Unable to find version string.')
+
+dynamic_version = find_version('venus', '__init__.py')
 
 setup(
     name='venuspy',
-    version='0.1.9',
+    version=dynamic_version,
     author="Alfredo Sequeida",
     description='A cross platform tool for setting a random wallpaper image from unsplash.com',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/AlfredoSequeida/venus',
-    download_url='https://github.com/AlfredoSequeida/venus/archive/0.1.9.tar.gz',
+    download_url='https://github.com/AlfredoSequeida/venus/archive/' + dynamic_version + '.tar.gz',
     keywords ='wallpaper unsplash randomwallpaper',
     platforms ='any',
     classifiers=[
