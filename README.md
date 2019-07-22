@@ -3,6 +3,7 @@ Venus: For those that get bored of looking at their wallpaper
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Downloads](https://pepy.tech/badge/venuspy)](https://pepy.tech/project/venuspy)
 
 
 <p align="center">
