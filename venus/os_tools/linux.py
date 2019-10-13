@@ -1,30 +1,32 @@
-import subprocess                                                           
+import subprocess
 import dbus
+import json
+
 
 def set_wall(picture_file):
     """
     This method sets a wallpaper
     :param picture_file - The file to use for setting the background
     """
-    #implementation for desktop envirorments and window mannagers using feh      for 
-    #wallpaper management for example: 
-    #i3 
-    #openbox
+    # implementation for desktop envirorments and window mannagers using feh      for
+    # wallpaper management for example:
+    # i3
+    # openbox
     try:
         feh = subprocess.call(["feh", "--bg-fill", picture_file])
     except:
         pass
 
-    #gsettings set org.gnome.desktop.background picture-uri 'file:///home/Jo     hnDoe/Pictures/cool_wallpaper.jpg'
-    #implementation for gnome desktops such as:
-    #ubuntu
-    #gnome
+    # gsettings set org.gnome.desktop.background picture-uri 'file:///home/Jo     hnDoe/Pictures/cool_wallpaper.jpg'
+    # implementation for gnome desktops such as:
+    # ubuntu
+    # gnome
     try:
         command = subprocess.call(["gsettings", "set", "org.gnome.desktop.background", "picture-uri", "file://" + picture_file])
     except:
         pass
 
-    #kde
+    # kde
     try:
         plugin = 'org.kde.image'
 
@@ -45,17 +47,33 @@ def set_wall(picture_file):
     except:
         pass
 
+    # sway
+    try:
+        swaymsg = subprocess.call(["swaymsg", "output * bg \"{f}\" fill".format(f=picture_file)])
+        pass
+    except:
+        pass
+
 
 def get_screen_resolution():
     """
     This method gets the screen resolution using xrandr
     """
-    # note, we are using xrandr to get the screen resolution instead of usin     g   
+    # note, we are using xrandr to get the screen resolution instead of usin     g
     # something like tkinter or wxpython, which provides a cross platform
     # solution to avoid the need for dependecies.
 
-    #xrandr | grep \* | cut -d' ' -f4
+    # xrandr | grep \* | cut -d' ' -f4
+    try:
+        output = subprocess.Popen("xrandr  | grep \* | cut -d' ' -f4", shell=True, stdout=subprocess.PIPE).communicate()[0]
+        resolution = str(output.split()[0]).replace("b'", '').replace("'", '')
+        return resolution
+    except:
+        pass
 
-    output = subprocess.Popen("xrandr  | grep \* | cut -d' ' -f4",shell=True     , stdout=subprocess.PIPE).communicate()[0]
-    resolution = str(output.split()[0]).replace("b'", '').replace("'", '')
+    output = subprocess.Popen("swaymsg -t get_outputs", shell=True, stdout=subprocess.PIPE).communicate()[0]
+    tmp = json.loads(output)[0]['current_mode']
+
+    resolution = "{w}x{h}".format(w=tmp['width'], h=tmp['height'])
+
     return resolution
