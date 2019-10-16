@@ -66,7 +66,16 @@ def get_screen_resolution():
 
     # xrandr | grep \* | cut -d' ' -f4
 
-    output = subprocess.Popen("xrandr  | grep \* | cut -d' ' -f4",
-                              shell=True, stdout=subprocess.PIPE).communicate()[0]
-    resolution = str(output.split()[0]).replace("b'", '').replace("'", '')
+    try:
+        output = subprocess.Popen("xrandr  | grep \* | cut -d' ' -f4", shell=True, stdout=subprocess.PIPE).communicate()[0]
+        resolution = str(output.split()[0]).replace("b'", '').replace("'", '')
+        return resolution
+    except:
+        pass
+
+    output = subprocess.Popen("swaymsg -t get_outputs", shell=True, stdout=subprocess.PIPE).communicate()[0]
+    tmp = json.loads(output)[0]['current_mode']
+
+    resolution = "{w}x{h}".format(w=tmp['width'], h=tmp['height'])
+
     return resolution
