@@ -1,6 +1,6 @@
 import subprocess                                                           
 
-def set_wall(picture_file):
+def set_wall(picture_file, use_pywal):
     """
     This method sets a wallpaper
     :param picture_file - The file to use for setting the background
