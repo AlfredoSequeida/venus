@@ -53,21 +53,10 @@ def main():
 
     #getting config
     config = get_config()
+    search_term_config = config.get('SETTINGS', 'SEARCH_TERMS', fallback = '')
+    output_path_config = config.get('SETTINGS', 'OUTPUT_PATH', fallback = '')
+    wait_time_config = config.get('SETTINGS', 'WAIT_TIME', fallback = 0)
     
-    try:
-        search_term_config = config['SETTINGS']['SEARCH_TERMS']
-        output_path_config = config['SETTINGS']['OUTPUT_PATH']
-        wait_time_config = config['SETTINGS']['WAIT_TIME']
-
-    except KeyError: 
-
-        from venus import __config__
-
-        print ('Incorrect config file in $HOME/.config/venus'
-                + '\nPlease make sure all config options are present:'
-                + '\n' + __config__)
-
-        exit()
 
     #default path for empty OUTPUT_PATH setting
     if not output_path_config:
