@@ -1,11 +1,18 @@
 import subprocess                                                           
 import dbus
 
-def set_wall(picture_file):
+def set_wall(picture_file, use_pywal):
     """
     This method sets a wallpaper
     :param picture_file - The file to use for setting the background
     """
+
+    if use_pywal:
+        try:
+            wal = subprocess.call(["wal", "-i", picture_file, "-q"])
+        except:
+            pass
+
     #implementation for desktop envirorments and window mannagers using feh      for 
     #wallpaper management for example: 
     #i3 

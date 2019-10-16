@@ -56,6 +56,7 @@ def main():
     search_term_config = config.get('SETTINGS', 'SEARCH_TERMS', fallback = '')
     output_path_config = config.get('SETTINGS', 'OUTPUT_PATH', fallback = '')
     wait_time_config = config.get('SETTINGS', 'WAIT_TIME', fallback = 0)
+    use_pywal_config = config.getboolean('SETTINGS', 'USE_PYWAL', fallback= False)
     
 
     #default path for empty OUTPUT_PATH setting
@@ -69,7 +70,7 @@ def main():
 
         system.set_wall(get_wall(resolution=system.get_screen_resolution(), 
             search_term=search_term_config,
-            output_path = output_path_config))
+            output_path = output_path_config), use_pywal_config)
 
         if not wait_time_config:
             run = False
