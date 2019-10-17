@@ -87,7 +87,7 @@ Here is an example that changes the wallpaper every 60 seconds (1 minute):
 WAIT_TIME = 60
 ```
 
-Venus supports using [pywal](https://github.com/dylanaraps/pywal) as an addon
+Venus supports using [pywal](https://github.com/dylanaraps/pywal) as an addon.
 To use pywal first [install it](https://github.com/dylanaraps/pywal/wiki/Installation), 
 then enable it in the config file:
 
@@ -95,12 +95,13 @@ then enable it in the config file:
 USE_PYWAL = True 
 ```
 
- 
+
  Current Verion 1.0.1 - verified working on
  -----------------
- - [x] Arch Linux [Feh 2.28]
- - [x] Ubuntu 18.04.1 LTS [Gnome 3.28]
- - [x] Kubuntu 19.04 [KDE Plasma 5.15.4]
+ - [x] Feh 2.28
+ - [x] Gnome 3.28
+ - [x] KDE Plasma 5.15.4
+ - [x] Sway 1.2 
  - [x] macOS High Sierra
  - [x] Windows 10
 
