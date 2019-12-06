@@ -87,6 +87,12 @@ Here is an example that changes the wallpaper every 60 seconds (1 minute):
 WAIT_TIME = 60
 ```
 
+By default a image is requested with the resoluton of your screen. If you need to change that for any reason (if your screen resolution is not available by Unsplash and you are getting a 404 image as your wallpaper), edit the SCREEN_RESOLUTION option. Here is an example:
+
+```
+SCREEN_RESOLUTION = 1920x1080
+```
+
 Venus supports using [pywal](https://github.com/dylanaraps/pywal) as an addon.
 To use pywal first [install it](https://github.com/dylanaraps/pywal/wiki/Installation), 
 then enable it in the config file:
