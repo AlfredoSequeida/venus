@@ -58,6 +58,7 @@ def main():
     # getting config
     config = get_config()
     search_term_config = config.get('SETTINGS', 'SEARCH_TERMS', fallback='')
+    screen_resolution_config = config.get('SETTINGS', 'SCREEN_RESOLUTION', fallback='')
     output_path_config = config.get('SETTINGS', 'OUTPUT_PATH', fallback='')
     wait_time_config = config.get('SETTINGS', 'WAIT_TIME', fallback=0)
     use_pywal_config = config.getboolean(
@@ -67,12 +68,16 @@ def main():
     if not output_path_config:
         output_path_config = None
 
+    # default to system screen resolution for empty SCREEN_RESOLUTION setting
+    if not screen_resolution_config:
+        screen_resolution_config = system.get_screen_resolution()
+
     # loop control var
     run = True
 
     while run:
 
-        system.set_wall(get_wall(resolution=system.get_screen_resolution(),
+        system.set_wall(get_wall(resolution=screen_resolution_config,
                                  search_term=search_term_config,
                                  output_path=output_path_config), use_pywal_config)
 
