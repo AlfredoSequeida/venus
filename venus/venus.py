@@ -45,13 +45,12 @@ def get_config():
 
 
 def main():
-    sys.path.append("/home/jason/git/venus/venus/os_tools")
     
     # checking platform for using system specific code
     platform = sys.platform
 
     if 'linux' in platform:
-        from os_tools import linux as system
+        from venus.os_tools import linux as system
     elif 'win32' in platform:
         from venus.os_tools import windows as system
     elif 'darwin' in platform:
@@ -63,6 +62,7 @@ def main():
     screen_resolution_config = config.get('SETTINGS', 'SCREEN_RESOLUTION', fallback='')
     output_path_config = config.get('SETTINGS', 'OUTPUT_PATH', fallback='')
     wait_time_config = config.get('SETTINGS', 'WAIT_TIME', fallback=0)
+    cache_items_config = config.get('SETTINGS', 'CACHE_ITEMS', fallback=100)
     use_pywal_config = config.getboolean(
         'SETTINGS', 'USE_PYWAL', fallback=False)
 
@@ -82,6 +82,13 @@ def main():
         system.set_wall(get_wall(resolution=screen_resolution_config,
                                  search_term=search_term_config,
                                  output_path=output_path_config), use_pywal_config)
+
+        cacheFiles = os.listdir(output_path_config)
+        if len(cacheFiles) >= int(cache_items_config):
+            for i, file in enumerate(cacheFiles):
+                if i >= int(cache_items_config):
+                    os.remove(output_path_config+"/"+file)
+
 
         if not wait_time_config:
             run = False

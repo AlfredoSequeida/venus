@@ -16,7 +16,7 @@ def set_wall(picture_file, use_pywal):
         except:
             pass
 
-    # implementation for desktop envirorments and window mannagers using feh      for
+    # implementation for desktop environments and window mannagers using feh for
     # wallpaper management for example:
     # i3
     # openbox
@@ -25,7 +25,7 @@ def set_wall(picture_file, use_pywal):
     except:
         pass
 
-    # gsettings set org.gnome.desktop.background picture-uri 'file:///home/Jo     hnDoe/Pictures/cool_wallpaper.jpg'
+    # gsettings set org.gnome.desktop.background picture-uri 'file:///home/JohnDoe/Pictures/cool_wallpaper.jpg'
     # implementation for gnome desktops such as:
     # ubuntu
     # gnome
@@ -68,9 +68,9 @@ def get_screen_resolution():
     """
     This method gets the screen resolution using xrandr
     """
-    # note, we are using xrandr to get the screen resolution instead of usin     g
+    # note, we are using xrandr to get the screen resolution instead of using
     # something like tkinter or wxpython, which provides a cross platform
-    # solution to avoid the need for dependecies.
+    # solution to avoid the need for dependencies.
 
     # xrandr | grep \* | cut -d' ' -f4
     try:
