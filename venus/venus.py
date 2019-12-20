@@ -45,7 +45,6 @@ def get_config():
 
 
 def main():
-    
     # checking platform for using system specific code
     platform = sys.platform
 
@@ -88,7 +87,6 @@ def main():
             for i, file in enumerate(cacheFiles):
                 if i >= int(cache_items_config):
                     os.remove(output_path_config+"/"+file)
-
 
         if not wait_time_config:
             run = False
