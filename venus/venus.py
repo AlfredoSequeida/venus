@@ -45,11 +45,13 @@ def get_config():
 
 
 def main():
+    sys.path.append("/home/jason/git/venus/venus/os_tools")
+    
     # checking platform for using system specific code
     platform = sys.platform
 
     if 'linux' in platform:
-        from venus.os_tools import linux as system
+        from os_tools import linux as system
     elif 'win32' in platform:
         from venus.os_tools import windows as system
     elif 'darwin' in platform:
