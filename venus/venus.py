@@ -4,6 +4,7 @@ import tempfile
 import os
 import configparser
 import time
+import glob
 
 
 def get_wall(resolution="1920x1080", search_term=None, output_path=None):
@@ -45,11 +46,12 @@ def get_config():
 
 
 def main():
+    sys.path.append("/home/jason/git/venus/venus/os_tools")
     # checking platform for using system specific code
     platform = sys.platform
 
     if 'linux' in platform:
-        from venus.os_tools import linux as system
+        from os_tools import linux as system
     elif 'win32' in platform:
         from venus.os_tools import windows as system
     elif 'darwin' in platform:
@@ -82,11 +84,13 @@ def main():
                                  search_term=search_term_config,
                                  output_path=output_path_config), use_pywal_config)
 
-        cacheFiles = os.listdir(output_path_config)
+        cacheFiles = glob.glob(output_path_config+"/*")
+        cacheFiles.sort(key=os.path.getmtime, reverse=True)
         if len(cacheFiles) >= int(cache_items_config):
             for i, file in enumerate(cacheFiles):
+                print(file)
                 if i >= int(cache_items_config):
-                    os.remove(output_path_config+"/"+file)
+                    os.remove(file)
 
         if not wait_time_config:
             run = False
