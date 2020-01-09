@@ -108,7 +108,6 @@ CACHE_ITEMS = 10
 ```
 
 Current Version 1.0.1 - verified working on
- Current Verion 1.0.1 - verified working on
  -----------------
  - [x] Feh 2.28
  - [x] Gnome 3.28
