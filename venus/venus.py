@@ -62,7 +62,7 @@ def main():
     screen_resolution_config = config.get('SETTINGS', 'SCREEN_RESOLUTION', fallback='')
     output_path_config = config.get('SETTINGS', 'OUTPUT_PATH', fallback='')
     wait_time_config = config.get('SETTINGS', 'WAIT_TIME', fallback=0)
-    cache_items_config = config.get('SETTINGS', 'CACHE_ITEMS', fallback=100)
+    cache_items_config = config.get('SETTINGS', 'CACHE_ITEMS', fallback=0)
     use_pywal_config = config.getboolean(
         'SETTINGS', 'USE_PYWAL', fallback=False)
 
@@ -82,14 +82,13 @@ def main():
         system.set_wall(get_wall(resolution=screen_resolution_config,
                                  search_term=search_term_config,
                                  output_path=output_path_config), use_pywal_config)
-
-        cacheFiles = glob.glob(output_path_config+"/*")
-        cacheFiles.sort(key=os.path.getmtime, reverse=True)
-        if len(cacheFiles) >= int(cache_items_config):
-            for i, file in enumerate(cacheFiles):
-                print(file)
-                if i >= int(cache_items_config):
-                    os.remove(file)
+        if cache_items_config:
+            cacheFiles = glob.glob(output_path_config+"/*")
+            cacheFiles.sort(key=os.path.getmtime, reverse=True)
+            if len(cacheFiles) >= int(cache_items_config):
+                for i, file in enumerate(cacheFiles):
+                    if i >= int(cache_items_config):
+                        os.remove(file)
 
         if not wait_time_config:
             run = False

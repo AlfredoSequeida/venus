@@ -1,6 +1,6 @@
 import os
 
-__version__ = '1.0.2'
+__version__ = '1.0.1'
 __config__ = '[SETTINGS]\nSEARCH_TERMS =\nOUTPUT_PATH =\nWAIT_TIME =' 
 
 dir_path_to_conf = os.path.join(os.path.expanduser('~'), '.config/venus')
