@@ -107,7 +107,7 @@ To limit the number of files stored locally and prevent filling your disk, set t
 CACHE_ITEMS = 10
 ```
 
-Current Version 1.0.1 - verified working on
+Current Version 1.0.2 - verified working on
  -----------------
  - [x] Feh 2.28
  - [x] Gnome 3.28
