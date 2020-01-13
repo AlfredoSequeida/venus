@@ -82,7 +82,7 @@ def main():
         system.set_wall(get_wall(resolution=screen_resolution_config,
                                  search_term=search_term_config,
                                  output_path=output_path_config), use_pywal_config)
-        if cache_items_config:
+        if cache_items_config and output_path_config:
             cacheFiles = glob.glob(output_path_config+"/*")
             cacheFiles.sort(key=os.path.getmtime, reverse=True)
             if len(cacheFiles) >= int(cache_items_config):
