@@ -101,8 +101,13 @@ then enable it in the config file:
 USE_PYWAL = True 
 ```
 
+To limit the number of files stored locally and prevent filling your disk, set the `CACHE_ITEMS` option (`0` is infinite)
 
- Current Verion 1.0.1 - verified working on
+```
+CACHE_ITEMS = 10
+```
+
+Current Version 1.0.1 - verified working on
  -----------------
  - [x] Feh 2.28
  - [x] Gnome 3.28
