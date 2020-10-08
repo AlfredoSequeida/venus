@@ -109,11 +109,12 @@ CACHE_ITEMS = 10
 
 Current Version 1.0.3 - verified working on
  -----------------
- - [x] Feh 2.28
+ - [x] Feh 3.5
  - [x] Gnome 3.28
  - [x] KDE Plasma 5.15.4
- - [x] Sway 1.2 
+ - [x] Sway 1.2
  - [x] macOS High Sierra
+ - [x] macOS Mojave
  - [x] Windows 10
 
  
