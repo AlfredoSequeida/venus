@@ -63,6 +63,21 @@ def set_wall(picture_file, use_pywal):
     except:
         pass
 
+    # Xfce4
+    # TODO: handle multiple screens, monitors, and workspaces
+    try:
+        process = subprocess.Popen(["xfconf-query", "--channel", "xfce4-desktop", "--list"],
+                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                   universal_newlines=True)
+        stdout, stderr = process.communicate(timeout=5)
+        for line in stdout.splitlines():
+            if line.endswith("last-image"):
+                subprocess.call(["xfconf-query", "--channel", "xfce4-desktop", "--property", line,
+                                 "--set", picture_file], **silent)
+                break
+    except:
+        pass
+
 
 def get_screen_resolution():
     """
