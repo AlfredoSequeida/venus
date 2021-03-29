@@ -59,7 +59,7 @@ Venus can be configured for specific search terms to get a category of images.
 Edit the config file located in:
 
 ```
-~.config/venus/config
+~/.config/venus/config
 ```
 
 By default, the search terms are empty, which means the image selection will be random. To choose what kind of images you want, enter search terms separated by commas.
@@ -69,6 +69,13 @@ Here is an example:
 ```
 SEARCH_TERMS = landscape,nature,car
 ```
+
+To get images of a specific Unsplash [collection](https://unsplash.com/collections), use its id:
+
+```
+COLLECTION_ID = 1053828
+```
+> Note: If `COLLECTION_ID` is set, the `SEARCH_TERMS` is ignored.
 
 By default all images are stored as temporary files in the temp directory of the operating system. To change the location where the images are stored, edit the OUTPUT_PATH option.
 
