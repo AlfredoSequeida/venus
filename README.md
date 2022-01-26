@@ -53,6 +53,12 @@ Windows
 py -m venus 
 ```
 
+You can also supply search terms to the command:
+
+```
+venus landscape nature car
+```
+
 # Config
 Venus can be configured for specific search terms to get a category of images.
 
@@ -69,6 +75,8 @@ Here is an example:
 ```
 SEARCH_TERMS = landscape,nature,car
 ```
+
+Search terms in the command will overwrite those from the config.
 
 By default all images are stored as temporary files in the temp directory of the operating system. To change the location where the images are stored, edit the OUTPUT_PATH option.
 
