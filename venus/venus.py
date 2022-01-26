@@ -7,7 +7,7 @@ import time
 import glob
 
 
-def get_wall(resolution="1920x1080", search_term=None, output_path=None):
+def get_wall(resolution="1920x1080", search_term=None, output_path=None, collection_id=None):
     """
     This method downloads a random  wallpaper to use from unsplash. The file is 
     saved to a temporary file so it can be taken care of by the operating 
@@ -18,7 +18,12 @@ def get_wall(resolution="1920x1080", search_term=None, output_path=None):
     :return - the picture file retrieved
     """
 
-    base_url = 'https://source.unsplash.com/' + resolution + '/?' + search_term
+    # If collection_id is empty, then get images based on search_term
+    if collection_id == '':
+        base_url = 'https://source.unsplash.com/' + resolution + '/?' + search_term
+    # Get images from a collection
+    else:
+        base_url = 'https://source.unsplash.com/collection/' + collection_id + '/' + resolution
 
     r = requests.get(base_url)
 
@@ -65,6 +70,7 @@ def main():
     cache_items_config = config.get('SETTINGS', 'CACHE_ITEMS', fallback=0)
     use_pywal_config = config.getboolean(
         'SETTINGS', 'USE_PYWAL', fallback=False)
+    collection_id_config = config.get('SETTINGS', 'COLLECTION_ID', fallback='')
 
     # default path for empty OUTPUT_PATH setting
     if not output_path_config:
@@ -81,7 +87,8 @@ def main():
 
         system.set_wall(get_wall(resolution=screen_resolution_config,
                                  search_term=search_term_config,
-                                 output_path=output_path_config), use_pywal_config)
+                                 output_path=output_path_config,
+                                 collection_id=collection_id_config), use_pywal_config)
         if cache_items_config and output_path_config:
             cacheFiles = glob.glob(output_path_config+"/*")
             cacheFiles.sort(key=os.path.getmtime, reverse=True)
