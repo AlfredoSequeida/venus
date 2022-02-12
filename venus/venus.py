@@ -63,7 +63,7 @@ def main():
 
     # getting config
     config = get_config()
-    search_term_config = config.get('SETTINGS', 'SEARCH_TERMS', fallback='')
+    search_term_config = ",".join(sys.argv[1:]) or config.get('SETTINGS', 'SEARCH_TERMS', fallback='')
     screen_resolution_config = config.get('SETTINGS', 'SCREEN_RESOLUTION', fallback='')
     output_path_config = config.get('SETTINGS', 'OUTPUT_PATH', fallback='')
     wait_time_config = config.get('SETTINGS', 'WAIT_TIME', fallback=0)

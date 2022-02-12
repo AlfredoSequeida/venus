@@ -53,6 +53,12 @@ Windows
 py -m venus 
 ```
 
+You can also supply search terms to the command:
+
+```
+venus landscape nature car
+```
+
 # Config
 Venus can be configured for specific search terms to get a category of images.
 
@@ -69,6 +75,8 @@ Here is an example:
 ```
 SEARCH_TERMS = landscape,nature,car
 ```
+
+> Search terms in the command will overwrite those from the config.
 
 To get images of a specific Unsplash [collection](https://unsplash.com/collections), use its id:
 
