@@ -1,11 +1,13 @@
-import configparser
 import glob
 import os
 import sys
 import tempfile
 import time
+from configparser import ConfigParser
 
 import requests
+
+import os_tools
 
 
 def get_url(collection_id: str, resolution: str, search_term: str) -> str:
@@ -25,7 +27,7 @@ def get_url(collection_id: str, resolution: str, search_term: str) -> str:
     return f"https://source.unsplash.com/collection/{collection_id}/{resolution}"
 
 
-def get_wall(base_url: str, output_path: str):
+def get_wall(base_url: str, output_path: str) -> str:
     """
     This method downloads a random  wallpaper to use from unsplash. The file is
     saved to a temporary file so it can be taken care of by the operating
@@ -36,52 +38,60 @@ def get_wall(base_url: str, output_path: str):
     :return: the picture file retrieved
     """
 
-    r = requests.get(base_url)
-
     fd, picture_file = tempfile.mkstemp(suffix=".jpg", prefix="venus_", dir=output_path)
 
+    # downloading the image to the system
+    r = requests.get(base_url)
     with os.fdopen(fd, "wb") as f:
-        # downloading the image to the system
         f.write(r.content)
 
     return picture_file
 
 
-def get_config():
+def get_config() -> ConfigParser:
     """
     This method gets the configuration for venus
 
     :return - the config file
     """
 
-    config = configparser.ConfigParser()
+    config = ConfigParser()
     config.read(os.path.join(os.path.expanduser("~"), ".config/venus/config"))
-
     return config
 
 
-def main():
-    # checking platform for using system specific code
-    platform = sys.platform
+def get_sytem():
+    if sys.platform == "linux":
+        return os_tools.linux
+    if sys.platform == "win32":
+        return os_tools.windows
+    if sys.platform == "darwin":
+        return os_tools.darwin
 
-    if "linux" in platform:
-        from venus.os_tools import linux as system
-    elif "win32" in platform:
-        from venus.os_tools import windows as system
-    elif "darwin" in platform:
-        from venus.os_tools import darwin as system
+
+def main():
+
+    # checking platform for using system specific code
+    system = get_sytem()
 
     # getting config
     config = get_config()
-    search_term_config = ",".join(sys.argv[1:]) or config.get(
-        "SETTINGS", "SEARCH_TERMS", fallback=""
+
+    # parse config
+    screen_resolution_config = config.get(
+        "SETTINGS", "SCREEN_RESOLUTION", fallback=None
     )
-    screen_resolution_config = config.get("SETTINGS", "SCREEN_RESOLUTION", fallback="")
-    output_path_config = config.get("SETTINGS", "OUTPUT_PATH", fallback="")
-    wait_time_config = config.get("SETTINGS", "WAIT_TIME", fallback=0)
-    cache_items_config = config.get("SETTINGS", "CACHE_ITEMS", fallback=0)
+    output_path_config = config.get("SETTINGS", "OUTPUT_PATH", fallback=None)
+    cache_items_config = config.get("SETTINGS", "CACHE_ITEMS", fallback=None)
+    wait_time_config = config.get("SETTINGS", "WAIT_TIME", fallback=None)
     use_pywal_config = config.getboolean("SETTINGS", "USE_PYWAL", fallback=False)
     collection_id_config = config.get("SETTINGS", "COLLECTION_ID", fallback=None)
+
+    search_terms_config = (
+        config.get("SETTINGS", "SEARCH_TERMS", fallback=None)
+        if len(sys.argv) == 1
+        else sys.argv[1:]
+    )
 
     # default path for empty OUTPUT_PATH setting
     if not output_path_config:
@@ -92,7 +102,9 @@ def main():
         screen_resolution_config = system.get_screen_resolution()
 
     base_url_config = get_url(
-        collection_id_config, screen_resolution_config, search_term_config
+        collection_id=collection_id_config,
+        resolution=screen_resolution_config,
+        search_terms=search_terms_config,
     )
 
     # loop control var
@@ -122,4 +134,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    config = get_config()
+    print(config)
