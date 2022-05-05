@@ -3,6 +3,13 @@ import subprocess
 
 
 def set_wall(picture_file, use_pywal):
+    """This method sets a wallpaper.
+
+    :param picture_file: The file to use for setting the background
+    :param use_pywal: boolean determining whether pywal should be used
+    :return: None
+    """
+
     if use_pywal:
         try:
             wal = subprocess.call(["wal", "-i", picture_file, "-q"])
@@ -18,9 +25,11 @@ def set_wall(picture_file, use_pywal):
 
 
 def get_screen_resolution():
+    """returns the current system's screen resolution
+
+    :return: string containing the screen resolution
     """
-    This method gets the screen resolution using the win32 video controller
-    """
+
     output = subprocess.Popen(
         "wmic path Win32_VideoController get CurrentHorizontalResolution, CurrentVerticalResolution",
         shell=True,

@@ -1,7 +1,13 @@
 import subprocess
 
 
-def set_wall(picture_file, use_pywal):
+def set_wall(picture_file: str, use_pywal: bool) -> None:
+    """This method sets a wallpaper.
+
+    :param picture_file: The file to use for setting the background
+    :param use_pywal: boolean determining whether pywal should be used
+    :return: None
+    """
 
     SCRIPT = """/usr/bin/osascript<<END
     tell application "Finder"
@@ -11,7 +17,11 @@ def set_wall(picture_file, use_pywal):
     subprocess.Popen(SCRIPT % picture_file, shell=True)
 
 
-def get_screen_resolution():
+def get_screen_resolution() -> str:
+    """returns the current system's screen resolution
+
+    :return: string containing the screen resolution
+    """
 
     output = subprocess.Popen(
         "system_profiler SPDisplaysDataType |grep Resolution",

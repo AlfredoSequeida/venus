@@ -5,6 +5,13 @@ import dbus
 
 
 def set_wall(picture_file, use_pywal):
+    """This method sets a wallpaper.
+
+    :param picture_file: The file to use for setting the background
+    :param use_pywal: boolean determining whether pywal should be used
+    :return: None
+    """
+
     silent = dict(stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     if use_pywal:
@@ -70,11 +77,17 @@ def set_wall(picture_file, use_pywal):
 
 
 def get_screen_resolution():
+    """returns the current system's screen resolution
+
+    :return: string containing the screen resolution
+    """
+
     # note, we are using xrandr to get the screen resolution instead of using
     # something like tkinter or wxpython, which provides a cross platform
     # solution to avoid the need for dependencies.
 
     # xrandr | grep \* | cut -d' ' -f4
+
     try:
         output = subprocess.Popen(
             "xrandr  | grep \* | cut -d' ' -f4",
