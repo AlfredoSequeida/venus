@@ -86,7 +86,7 @@ def main():
         if not config.wait_time:
             break
 
-        time.sleep(int(config.wait_time))
+        time.sleep(config.wait_time)
 
 
 if __name__ == "__main__":
