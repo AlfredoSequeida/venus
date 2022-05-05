@@ -45,7 +45,7 @@ def get_wall(base_url: str, output_path: str) -> str:
 
 
 def update_cached_items(max_cached_items: int, cache_dir: str) -> None:
-    """removes older wallpapers, keeping up to the maximum number of cached items set by config file.
+    """removes older wallpapers, keeping only the newest items up to the maximum number of cached items set by config file.
 
     :param max_cached_items: maximum number of allowed wallpapers in the cached directory
     :param cache_dir: cache directory path
@@ -57,7 +57,7 @@ def update_cached_items(max_cached_items: int, cache_dir: str) -> None:
     if len(cached_files) <= int(max_cached_items):
         return
 
-    [os.remove(file) for file in cached_files]
+    [os.remove(file) for file in cached_files[max_cached_items:]]
 
 
 def main():

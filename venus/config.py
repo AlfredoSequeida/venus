@@ -34,7 +34,7 @@ class VenusConfig:
 
     @property
     def cache_items(self) -> int:
-        cache_items = self._config.get("SETTINGS", "CACHE_ITEMS", fallback=0)
+        cache_items = int(self._config.get("SETTINGS", "CACHE_ITEMS", fallback=0))
         return cache_items if cache_items else 0
 
     @property
