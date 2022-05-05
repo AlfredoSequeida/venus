@@ -12,10 +12,7 @@ class VenusConfig:
     system: System
 
     def __post_init__(self):
-        self._path = os.path.join(
-            os.path.expanduser("~"),
-            path=".config/venus/config",
-        )
+        self._path = os.path.join(os.path.expanduser("~"), ".config/venus/config")
         self._config = ConfigParser()
         self._config.read(self._path)
 
@@ -27,7 +24,7 @@ class VenusConfig:
         return (
             screen_resolution
             if screen_resolution
-            else self.system.get_screen_resolution
+            else self.system.get_screen_resolution()
         )
 
     @property

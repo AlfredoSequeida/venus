@@ -21,7 +21,7 @@ def get_url(config: VenusConfig) -> str:
     if not config.collection_id:
         return f"https://source.unsplash.com/{config.resolution}/?{config.search_term}"
 
-    return f"https://source.unsplash.com/collection/{config.collection_id}/{config.resolution}"
+    return f"https://source.unsplash.com/collection/{config.collection_id}/{config.screen_resolution}"
 
 
 def get_wall(base_url: str, output_path: str) -> str:
@@ -90,9 +90,4 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-
-    if "":
-        print(True)
-    else:
-        print(False)
+    main()
