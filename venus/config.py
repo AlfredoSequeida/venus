@@ -39,7 +39,7 @@ class VenusConfig:
 
     @property
     def wait_time(self) -> int:
-        wait_time = self._config.get("SETTINGS", "WAIT_TIME", fallback=0)
+        wait_time = int(self._config.get("SETTINGS", "WAIT_TIME", fallback=0))
         return wait_time if wait_time else 0
 
     @property
