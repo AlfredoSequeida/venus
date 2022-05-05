@@ -1,30 +1,27 @@
 import glob
 import os
-import sys
 import tempfile
 import time
-from configparser import ConfigParser
 
 import requests
 
-import os_tools
+from config import VenusConfig
+from system import get_system
 
 
-def get_url(collection_id: str, resolution: str, search_term: str) -> str:
+def get_url(config: VenusConfig) -> str:
     """
     This method returns unsplash url based on user settings.
     If  a collection id is provided, it will return images within a given collection that fit the user monitor resolution.
     Otherwise, it will return random images from Unsplash that match any search criteria provided.
 
-    :param collection_id: string containing unsplash collection id.
-    :param resolution: string containg monitor resolution.
-    :param search_term: string containing search parameters.
+    :param config: VenusConfig class containing parameters from the config file.
     :return: unsplash url in string format.
     """
-    if not collection_id:
-        return f"https://source.unsplash.com/{resolution}/?{search_term}"
+    if not config.collection_id:
+        return f"https://source.unsplash.com/{config.resolution}/?{config.search_term}"
 
-    return f"https://source.unsplash.com/collection/{collection_id}/{resolution}"
+    return f"https://source.unsplash.com/collection/{config.collection_id}/{config.resolution}"
 
 
 def get_wall(base_url: str, output_path: str) -> str:
@@ -33,8 +30,7 @@ def get_wall(base_url: str, output_path: str) -> str:
     saved to a temporary file so it can be taken care of by the operating
     system.
 
-    :param resolution: the resolution to use for retrieving the wallpaper the
-                        default resolution is 1920x1080
+    :param resolution: resolution to use for retrieving wallpapers. The default resolution the screen resolution.
     :return: the picture file retrieved
     """
 
@@ -48,92 +44,55 @@ def get_wall(base_url: str, output_path: str) -> str:
     return picture_file
 
 
-def get_config() -> ConfigParser:
+def update_cached_items(max_cached_items: int, cache_dir: str) -> None:
+    """removes older wallpapers, keeping up to the maximum number of cached items set by config file.
+
+    :param max_cached_items: maximum number of allowed wallpapers in the cached directory
+    :param cache_dir: cache directory path
     """
-    This method gets the configuration for venus
 
-    :return - the config file
-    """
+    cached_files = glob.glob(cache_dir + "/*")
+    cached_files.sort(key=os.path.getmtime, reverse=True)
 
-    config = ConfigParser()
-    config.read(os.path.join(os.path.expanduser("~"), ".config/venus/config"))
-    return config
+    if len(cached_files) <= int(max_cached_items):
+        return
 
-
-def get_sytem():
-    if sys.platform == "linux":
-        return os_tools.linux
-    if sys.platform == "win32":
-        return os_tools.windows
-    if sys.platform == "darwin":
-        return os_tools.darwin
+    [os.remove(file) for file in cached_files]
 
 
 def main():
 
     # checking platform for using system specific code
-    system = get_sytem()
+    system = get_system()
 
     # getting config
-    config = get_config()
+    config = VenusConfig(system)
 
-    # parse config
-    screen_resolution_config = config.get(
-        "SETTINGS", "SCREEN_RESOLUTION", fallback=None
-    )
-    output_path_config = config.get("SETTINGS", "OUTPUT_PATH", fallback=None)
-    cache_items_config = config.get("SETTINGS", "CACHE_ITEMS", fallback=None)
-    wait_time_config = config.get("SETTINGS", "WAIT_TIME", fallback=None)
-    use_pywal_config = config.getboolean("SETTINGS", "USE_PYWAL", fallback=False)
-    collection_id_config = config.get("SETTINGS", "COLLECTION_ID", fallback=None)
+    # get unsplash url from config
+    unsplash_url = get_url(config)
 
-    search_terms_config = (
-        config.get("SETTINGS", "SEARCH_TERMS", fallback=None)
-        if len(sys.argv) == 1
-        else sys.argv[1:]
-    )
+    # main loop
+    while True:
 
-    # default path for empty OUTPUT_PATH setting
-    if not output_path_config:
-        output_path_config = None
+        # set wallpaper
+        wallpaper = get_wall(unsplash_url, config.output_path)
+        system.set_wall(wallpaper, config.use_pywal)
 
-    # default to system screen resolution for empty SCREEN_RESOLUTION setting
-    if not screen_resolution_config:
-        screen_resolution_config = system.get_screen_resolution()
+        # update cached wallpapers
+        if config.cache_items and config.output_path:
+            update_cached_items(config.cache_items, config.output_path)
 
-    base_url_config = get_url(
-        collection_id=collection_id_config,
-        resolution=screen_resolution_config,
-        search_terms=search_terms_config,
-    )
+        # wait for next change
+        if not config.wait_time:
+            break
 
-    # loop control var
-    run = True
-
-    while run:
-
-        system.set_wall(
-            get_wall(
-                base_url=base_url_config,
-                output_path=output_path_config,
-            ),
-            use_pywal_config,
-        )
-        if cache_items_config and output_path_config:
-            cacheFiles = glob.glob(output_path_config + "/*")
-            cacheFiles.sort(key=os.path.getmtime, reverse=True)
-            if len(cacheFiles) >= int(cache_items_config):
-                for i, file in enumerate(cacheFiles):
-                    if i >= int(cache_items_config):
-                        os.remove(file)
-
-        if not wait_time_config:
-            run = False
-        else:
-            time.sleep(int(wait_time_config))
+        time.sleep(int(config.wait_time))
 
 
 if __name__ == "__main__":
     # main()
-    config = get_config()
-    print(config)
+
+    if "":
+        print(True)
+    else:
+        print(False)
