@@ -1,12 +1,13 @@
-import subprocess
 import ctypes
-import os
+import subprocess
 
 
 def set_wall(picture_file, use_pywal):
-    """
-    This method sets a wallpaper
-    :param picture_file - The file to use for setting the background
+    """This method sets a wallpaper.
+
+    :param picture_file: The file to use for setting the background
+    :param use_pywal: boolean determining whether pywal should be used
+    :return: None
     """
 
     if use_pywal:
@@ -24,15 +25,27 @@ def set_wall(picture_file, use_pywal):
 
 
 def get_screen_resolution():
+    """returns the current system's screen resolution
+
+    :return: string containing the screen resolution
     """
-    This method gets the screen resolution using the win32 video controller 
-    """
-    output = subprocess.Popen("wmic path Win32_VideoController get CurrentHorizontalResolution, CurrentVerticalResolution",
-                              shell=True, stdout=subprocess.PIPE).communicate()[0]
+
+    output = subprocess.Popen(
+        "wmic path Win32_VideoController get CurrentHorizontalResolution, CurrentVerticalResolution",
+        shell=True,
+        stdout=subprocess.PIPE,
+    ).communicate()[0]
 
     # cleaning up output
-    resolution = str(output).replace("CurrentHorizontalResolution", "").replace(
-        "CurrentVerticalResolution", "").replace("b'", "").replace("\\n", " ").replace("\\r", " ").split()
+    resolution = (
+        str(output)
+        .replace("CurrentHorizontalResolution", "")
+        .replace("CurrentVerticalResolution", "")
+        .replace("b'", "")
+        .replace("\\n", " ")
+        .replace("\\r", " ")
+        .split()
+    )
 
     # formationg resolution
     resolution = resolution[0] + "x" + resolution[1]
