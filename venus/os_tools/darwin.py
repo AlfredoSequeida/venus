@@ -9,6 +9,14 @@ def set_wall(picture_file: str, use_pywal: bool) -> None:
     :return: None
     """
 
+    silent = dict(stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    if use_pywal:
+        try:
+            wal = subprocess.call(["wal", "-i", picture_file, "-q"], **silent)
+        except:
+            pass
+
     SCRIPT = """/usr/bin/osascript<<END
     tell application "Finder"
     set desktop picture to POSIX file "%s"

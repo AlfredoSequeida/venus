@@ -43,8 +43,8 @@ class VenusConfig:
 
         :return: integer representing the maximum number of allowed cached items
         """
-        cache_items = int(self._config.get("SETTINGS", "CACHE_ITEMS", fallback=0))
-        return cache_items if cache_items else 0
+        cache_items = self._config.get("SETTINGS", "CACHE_ITEMS", fallback=0)
+        return int(cache_items) if cache_items else 0
 
     @property
     def wait_time(self) -> int:
@@ -52,8 +52,8 @@ class VenusConfig:
 
         :return: integer representing the number of seconds before next wallpaper change
         """
-        wait_time = int(self._config.get("SETTINGS", "WAIT_TIME", fallback=0))
-        return wait_time if wait_time else 0
+        wait_time = self._config.get("SETTINGS", "WAIT_TIME", fallback=0)
+        return int(wait_time) if wait_time else 0
 
     @property
     def use_pywal(self) -> bool:
