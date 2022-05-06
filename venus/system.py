@@ -10,12 +10,26 @@ class System:
     :param get_screen_resolution: system-specific function to get the screen resolution.
     """
 
-    set_wall: callable
-    get_screen_resolution: callable
+    sys_set_wall: callable
+    sys_get_screen_resolution: callable
+
+    def set_wall(self, picture_file: str, use_pywal: bool) -> None:
+        """This method sets a wallpaper.
+
+        :param picture_file: The file to use for setting the background
+        :param use_pywal: boolean determining whether pywal should be used
+        :return: None
+        """
+
+        self.sys_set_wall(picture_file, use_pywal)
 
     @property
     def screen_resolution(self) -> str:
-        return self.get_screen_resolution()
+        """returns the current system's screen resolution
+
+        :return: string containing the screen resolution
+        """
+        return self.sys_get_screen_resolution()
 
 
 def get_system() -> System:
