@@ -7,9 +7,11 @@ def set_wall(picture_file, use_pywal):
     """
 
     SCRIPT = """/usr/bin/osascript<<END
-    tell application "Finder"
-    set desktop picture to POSIX file "%s"
-    end tell"""
+    tell application "System Events"
+    set picture of current desktop to "%s"'
+    set picture of second desktop to "%s"'
+    end tell
+    """
 
     subprocess.Popen(SCRIPT%picture_file, shell=True)
 
