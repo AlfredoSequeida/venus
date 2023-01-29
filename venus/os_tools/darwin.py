@@ -6,10 +6,16 @@ def set_wall(picture_file, use_pywal):
     :param picture_file - The file to use for setting the background
     """
 
-    SCRIPT = """/usr/bin/osascript<<END
-    tell application "Finder"
-    set desktop picture to POSIX file "%s"
-    end tell"""
+    SCRIPT = """tell application "System Events"
+set pic to "%s"
+    tell desktop 1
+        set picture to pic
+    end tell
+    tell desktop 2
+        set picture to pic
+    end tell
+end tell
+    """
 
     subprocess.Popen(SCRIPT%picture_file, shell=True)
 
